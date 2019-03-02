@@ -1,0 +1,21 @@
+{
+  "name": "ads-b",
+  "version": "1.0.0",
+  "description": "Library for decoding ads-b data",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require ts-node/register \"**/*.spec.ts\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.9.5",
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "prettier": "1.16.4",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333"
+  }
+}
