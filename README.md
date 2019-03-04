@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/mattlaver/ads-b.svg?branch=master)](https://travis-ci.org/mattlaver/ads-b)
 # ads-b
 
 Node package to decode ADS-B messages
