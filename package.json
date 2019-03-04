@@ -1,6 +1,6 @@
 {
   "name": "ads-b",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Library for decoding ADS-B messages emitted from Aircraft",
   "files": ["dist/**/*"],
   "main": "dist/ADSBVersion2Decoder.js",
