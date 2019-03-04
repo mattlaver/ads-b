@@ -1,8 +1,10 @@
 {
   "name": "ads-b",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Library for decoding ADS-B messages emitted from Aircraft",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "main": "dist/ADSBVersion2Decoder.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -15,12 +17,28 @@
     "preversion": "npm run lint",
     "postversion": "git push && git push --tags"
   },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mattlaver/ads-b.git"
   },
   "author": "Matt Laver",
-  "keywords": ["Mode-s", "ADS-B"],
+  "keywords": [
+    "Mode-s",
+    "ADS-B"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.1.7",

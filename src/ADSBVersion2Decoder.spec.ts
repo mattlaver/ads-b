@@ -1,4 +1,10 @@
-'use strict';
+/**
+ * MIT License
+ * Copyright (c) 2019 Matt Laver
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/mattlaver/ads-b/blob/master/LICENSE
+ */
 
 import { expect } from 'chai';
 import { ADSBVersion2Decoder, IADS_B_Version2 } from './ADSBVersion2Decoder';
