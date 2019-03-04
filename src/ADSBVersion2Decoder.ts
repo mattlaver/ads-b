@@ -1,29 +1,29 @@
-"use strict";
+'use strict';
 
-import { IDecoder } from "./IDecoder";
+import { IDecoder } from './IDecoder';
 
-import { crc } from "./lib/crc24";
-import { MessageBuilder } from "./messageDecoders/MessageBuilder";
+import { crc } from './lib/crc24';
+import { MessageBuilder } from './messageDecoders/MessageBuilder';
 
 export class ADSBVersion2Decoder implements IDecoder<IADS_B_Version2> {
   private _messageBuilder = new MessageBuilder();
 
-  isValid(message: string): boolean {
+  public isValid(message: string): boolean {
     return crc(message) === message.substr(22, 6);
   }
 
-  decode(message: string): IADS_B_Version2 {
+  public decode(message: string): IADS_B_Version2 {
     const firstByte: number = parseInt(message.substr(0, 2), 16);
     const data: string = message.substr(8, 14);
     const typeCode: number = (parseInt(data.substr(0, 2), 16) >> 3) & 0x1f;
 
     return {
-      DF: this.dataLinkFormat(firstByte),
-      CA: this.capability(firstByte),
-      ICAO: message.substr(2, 6),
-      TC: typeCode,
-      DATA: this._messageBuilder.messageFromTypeCode(typeCode, data),
-      PI: message.substr(22, 6)
+      ca: this.capability(firstByte),
+      data: this._messageBuilder.messageFromTypeCode(typeCode, data),
+      df: this.dataLinkFormat(firstByte),
+      icao: message.substr(2, 6),
+      pi: message.substr(22, 6),
+      tc: typeCode,
     };
   }
 
@@ -32,10 +32,10 @@ export class ADSBVersion2Decoder implements IDecoder<IADS_B_Version2> {
 }
 
 export interface IADS_B_Version2 {
-  DF: number;
-  CA: number;
-  ICAO: string;
-  TC: number;
-  DATA: any;
-  PI: string;
+  df: number;
+  ca: number;
+  icao: string;
+  tc: number;
+  data: any;
+  pi: string;
 }

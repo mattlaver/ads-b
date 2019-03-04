@@ -1,17 +1,16 @@
-"use strict";
+'use strict';
 
-import { IMessageDecoder } from "./IMessgeDecoder";
-import { ISurfacePosition } from "../messages/ISurfacePosition";
+import { ISurfacePosition } from '../messages/ISurfacePosition';
+import { IMessageDecoder } from './IMessgeDecoder';
 
-export class SurfacePositionDecoder
-  implements IMessageDecoder<ISurfacePosition> {
-  isValid(typeCode: number): boolean {
+export class SurfacePositionDecoder implements IMessageDecoder<ISurfacePosition> {
+  public isValid(typeCode: number): boolean {
     return typeCode >= 5 && typeCode <= 8;
   }
 
-  decode(message: string): ISurfacePosition {
+  public decode(message: string): ISurfacePosition {
     return {
-      Position: ""
+      Position: '',
     };
   }
 }

@@ -1,17 +1,17 @@
-"use strict";
+'use strict';
 
-import { AircraftIdentificationDecoder } from "./AircraftIdentificationDecoder";
-import { SurfacePositionDecoder } from "./SurfacePositionDecoder";
-import { IMessageDecoder } from "./IMessgeDecoder";
-import { IMessage } from "../messages/IMessage";
+import { IMessage } from '../messages/IMessage';
+import { AircraftIdentificationDecoder } from './AircraftIdentificationDecoder';
+import { IMessageDecoder } from './IMessgeDecoder';
+import { SurfacePositionDecoder } from './SurfacePositionDecoder';
 
 export class MessageBuilder {
-  private messageDecoders: IMessageDecoder<IMessage>[] = [
+  private messageDecoders: Array<IMessageDecoder<IMessage>> = [
     new AircraftIdentificationDecoder(),
-    new SurfacePositionDecoder()
+    new SurfacePositionDecoder(),
   ];
 
-  messageFromTypeCode(typeCode: number, message: string) {
+  public messageFromTypeCode(typeCode: number, message: string) {
     const messageDecoder = this.messageDecoders.find(x => x.isValid(typeCode));
 
     if (!messageDecoder) {

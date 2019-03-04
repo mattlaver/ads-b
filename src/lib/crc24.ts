@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 const table = [
   0x3935ea,
@@ -112,35 +112,36 @@ const table = [
   0x000000,
   0x000000,
   0x000000,
-  0x000000
+  0x000000,
 ];
 
 const LONG_MSG_BITS = 112;
 const SHORT_MSG_BITS = 56;
 
 function hexToBytes(hex: string) {
-  for (var bytes = [], c = 0; c < hex.length; c += 2)
+  const bytes = [];
+  for (let c = 0; c < hex.length; c += 2) {
     bytes.push(parseInt(hex.substr(c, 2), 16));
+  }
   return bytes;
 }
 
 export function crc(hexString: string) {
-  let decimalArray = hexToBytes(hexString);
+  const decimalArray = hexToBytes(hexString);
 
-  const bits: number =
-    decimalArray.length * 8 === SHORT_MSG_BITS ? SHORT_MSG_BITS : LONG_MSG_BITS;
+  const bits: number = decimalArray.length * 8 === SHORT_MSG_BITS ? SHORT_MSG_BITS : LONG_MSG_BITS;
   const offset = bits === LONG_MSG_BITS ? 0 : LONG_MSG_BITS - SHORT_MSG_BITS;
 
-  let crc = 0;
+  let result = 0;
   for (let bitIndex: number = 0; bitIndex < bits; bitIndex++) {
-    const numberIndex = parseInt("" + bitIndex / 8, 10);
+    const numberIndex = parseInt('' + bitIndex / 8, 10);
     const bit = bitIndex % 8;
     const bitmask = 1 << (7 - bit);
 
     if (+decimalArray[numberIndex] & bitmask) {
-      crc ^= table[bitIndex + offset];
+      result ^= table[bitIndex + offset];
     }
   }
 
-  return crc.toString(16);
+  return result.toString(16);
 }
