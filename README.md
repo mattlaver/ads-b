@@ -40,8 +40,8 @@ The library takes input like `8D4840D6202CC371C32CE0576098` and, if successfull,
 
 ## JavaScript
 
-```
-const decoders = require("ads-b");
+```javascript
+const decoders = require('ads-b');
 
 const adsb = new decoders.ADSBVersion2Decoder();
 const message = adsb.decode('8D4840D6202CC371C32CE0576098');
