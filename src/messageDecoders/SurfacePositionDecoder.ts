@@ -8,6 +8,7 @@
 
 import { ISurfacePosition } from '../messages/ISurfacePosition';
 import { IMessageDecoder } from './IMessgeDecoder';
+import { MessageType } from '../messages/IMessage';
 
 export class SurfacePositionDecoder implements IMessageDecoder<ISurfacePosition> {
   public isValid(typeCode: number): boolean {
@@ -16,7 +17,10 @@ export class SurfacePositionDecoder implements IMessageDecoder<ISurfacePosition>
 
   public decode(message: string): ISurfacePosition {
     return {
-      Position: '',
+      data: {
+        position: '',
+      },
+      messageType: MessageType.SurfacePosition,
     };
   }
 }

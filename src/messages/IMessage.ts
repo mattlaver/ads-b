@@ -6,4 +6,14 @@
  * found in the LICENSE file at https://github.com/mattlaver/ads-b/blob/master/LICENSE
  */
 
-export interface IMessage {}
+export enum MessageType {
+  Unknown = 'Unknown',
+  ChecksumFailed = 'CheckSumFailed',
+  AircraftIdentifier = 'AircraftIdentifier',
+  SurfacePosition = 'SurfacePosition',
+}
+
+export interface IMessage {
+  messageType: MessageType;
+  data: {};
+}

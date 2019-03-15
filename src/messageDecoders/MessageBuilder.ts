@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://github.com/mattlaver/ads-b/blob/master/LICENSE
  */
 
-import { IMessage } from '../messages/IMessage';
+import { IMessage, MessageType } from '../messages/IMessage';
 import { AircraftIdentificationDecoder } from './AircraftIdentificationDecoder';
 import { IMessageDecoder } from './IMessgeDecoder';
 import { SurfacePositionDecoder } from './SurfacePositionDecoder';
@@ -17,11 +17,11 @@ export class MessageBuilder {
     new SurfacePositionDecoder(),
   ];
 
-  public messageFromTypeCode(typeCode: number, message: string) {
+  public messageFromTypeCode(typeCode: number, message: string): IMessage {
     const messageDecoder = this.messageDecoders.find(x => x.isValid(typeCode));
 
     if (!messageDecoder) {
-      return {};
+      return { messageType: MessageType.Unknown, data: {} };
     }
 
     return messageDecoder.decode(message);

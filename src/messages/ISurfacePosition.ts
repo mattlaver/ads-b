@@ -9,5 +9,7 @@
 import { IMessage } from './IMessage';
 
 export interface ISurfacePosition extends IMessage {
-  Position: string;
+  data: {
+    position: string;
+  };
 }

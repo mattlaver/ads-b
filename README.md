@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/mattlaver/ads-b.svg?branch=master)](https://travis-ci.org/mattlaver/ads-b)
+
 # ads-b
 
 Node package to decode ADS-B messages
@@ -25,7 +26,9 @@ The library takes input like `8D4840D6202CC371C32CE0576098` and, if successfull,
 ```
 {
   ca: 5,
-  data: { CallSign: 'KLM1023_' },
+  data: {
+    callsign: 'KLM1023_'
+  },
   df: 17,
   icao: '4840D6',
   pi: '576098',
