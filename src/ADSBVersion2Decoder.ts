@@ -8,8 +8,8 @@
 
 import { IDecoder } from './IDecoder';
 import { crc } from './lib/crc24';
-import { MessageType } from './messages/IMessage';
 import { MessageBuilder } from './messageDecoders/MessageBuilder';
+import { MessageType } from './messages/IMessage';
 
 export class ADSBVersion2Decoder implements IDecoder<IADS_B_Version2> {
   private _messageBuilder = new MessageBuilder();
@@ -24,7 +24,7 @@ export class ADSBVersion2Decoder implements IDecoder<IADS_B_Version2> {
     const data: string = message.substr(8, 14);
     const typeCode: number = (parseInt(data.substr(0, 2), 16) >> 3) & 0x1f;
 
-    if (crc(message.substr(0, 22)) != message.substr(22, 6)) {
+    if (crc(message.substr(0, 22)) !== message.substr(22, 6)) {
       return {
         messageType: MessageType.ChecksumFailed,
         raw: message,
@@ -38,9 +38,9 @@ export class ADSBVersion2Decoder implements IDecoder<IADS_B_Version2> {
       data: messageDecoded.data,
       df: this.dataLinkFormat(firstByte),
       icao: message.substr(2, 6),
+      messageType: messageDecoded.messageType,
       pi: message.substr(22, 6),
       tc: typeCode,
-      messageType: messageDecoded.messageType,
       raw: message,
     };
   }

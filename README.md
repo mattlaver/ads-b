@@ -31,6 +31,7 @@ The library takes input like `8D4840D6202CC371C32CE0576098` and, if successfull,
   },
   df: 17,
   icao: '4840D6',
+  messageType: 'AircraftIdentifier',
   pi: '576098',
   tc: 4
 }

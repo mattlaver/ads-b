@@ -6,8 +6,8 @@
  * found in the LICENSE file at https://github.com/mattlaver/ads-b/blob/master/LICENSE
  */
 
-import { MessageType } from '../messages/IMessage';
 import { IAircraftIdentification } from '../messages/IAircraftIdentification';
+import { MessageType } from '../messages/IMessage';
 import { IMessageDecoder } from './IMessgeDecoder';
 
 export class AircraftIdentificationDecoder implements IMessageDecoder<IAircraftIdentification> {
