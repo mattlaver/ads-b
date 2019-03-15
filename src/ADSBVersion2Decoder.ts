@@ -40,8 +40,8 @@ export class ADSBVersion2Decoder implements IDecoder<IADS_B_Version2> {
       icao: message.substr(2, 6),
       messageType: messageDecoded.messageType,
       pi: message.substr(22, 6),
-      tc: typeCode,
       raw: message,
+      tc: typeCode,
     };
   }
 

@@ -6,9 +6,9 @@
  * found in the LICENSE file at https://github.com/mattlaver/ads-b/blob/master/LICENSE
  */
 
+import { MessageType } from '../messages/IMessage';
 import { ISurfacePosition } from '../messages/ISurfacePosition';
 import { IMessageDecoder } from './IMessgeDecoder';
-import { MessageType } from '../messages/IMessage';
 
 export class SurfacePositionDecoder implements IMessageDecoder<ISurfacePosition> {
   public isValid(typeCode: number): boolean {
